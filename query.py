@@ -38,5 +38,15 @@ class QueryJson:
                     else:
                         daytime[str(time.hour)] += 1
         return daytime
-                    
-                        
+    
+    # use this for event and device field
+    def getAllTypes(self, field):
+        events = {}
+        for value in self.data.values():
+            for entry in value:
+                if entry[field] not in events:
+                    events[entry[field]] = 1
+                else:
+                    events[entry[field]] += 1
+        return events
+
