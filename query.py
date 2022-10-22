@@ -41,13 +41,11 @@ class QueryJson:
     
     # use this for event and device field
     def getAllTypes(self, field):
-        events = {}
+        events = []
         for value in self.data.values():
             for entry in value:
                 if entry[field] not in events:
-                    events[entry[field]] = 1
-                else:
-                    events[entry[field]] += 1
+                    events.append(entry[field])
         return events
     
     def getTotalBy(self, specifications):
@@ -58,7 +56,6 @@ class QueryJson:
                 for key in specifications.keys():
                     if entry[key] not in specifications[key]:
                         flag = False
-
                 if flag:
                     total += 1
 
