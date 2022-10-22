@@ -49,4 +49,17 @@ class QueryJson:
                 else:
                     events[entry[field]] += 1
         return events
+    
+    def getTotalBy(self, specifications):
+        total = 0
+        for value in self.data.values():
+            for entry in value:
+                flag = True
+                for key in specifications.keys():
+                    if entry[key] not in specifications[key]:
+                        flag = False
 
+                if flag:
+                    total += 1
+
+        return total
