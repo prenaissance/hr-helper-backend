@@ -1,4 +1,5 @@
 import format
+from dateutil import parser
 
 
 class QueryJson:
@@ -13,6 +14,7 @@ class QueryJson:
                     total += 1
         return total
     
+    # do not use it to get conversion by time
     def getConversionBy(self, field):
         locale = {}
         for value in self.data.values():
@@ -23,3 +25,18 @@ class QueryJson:
                     else:
                         locale[entry[field]] += 1
         return locale
+
+    def getConversionByHour(self, utc_timezone="+00:00"):
+        daytime = {}
+        for value in self.data.values():
+            for entry in value:
+                if entry['event'] == 'conversion':
+                    time = parser.parse(entry['time'].replace('Z', utc_timezone))
+                    time += time.utcoffset()
+                    if str(time.hour) not in daytime:
+                        daytime[str(time.hour)] = 1
+                    else:
+                        daytime[str(time.hour)] += 1
+        return daytime
+                    
+                        
