@@ -1,14 +1,14 @@
 # python backend
 
-create conda enviroment
+#create conda enviroment
 conda create --name <envname> --file requirements.txt
 
-activate conda enviromen
+#activate conda enviromen
 conda activate <envname>
 
-deactivate conda enviroment
+#deactivate conda enviroment
 conda deactivate
 
-run project
+#run project
 python main.py or python3 main.py
 
