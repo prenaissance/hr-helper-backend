@@ -66,7 +66,7 @@ class QueryJson:
 
         return total
 
-    def getConvertTimeById(self, id):
+    def getConvertTimeById(self, id, trash_hold):
         if (len(self.data[id]) == 1):
             return 0
         start = parser.parse(self.data[id][0]['time'])
@@ -74,6 +74,9 @@ class QueryJson:
             if self.data[id][i]['event'] == "conversion":
                 end =  parser.parse(self.data[id][i]['time'])
                 return (end - start).total_seconds() / 60
+            now = parser.parse(self.data[id][i]['time'])
+            if (now - start).total_seconds() / 60 > trash_hold:
+                start = now
 
     def getConvertKeys(self):
         keys = {}

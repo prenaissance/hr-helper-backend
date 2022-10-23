@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # data.savaData('formatted.json')
 
 # if you have formatted data do this cause it's faster
-data = data.Data(formatted_path='formated.json')
+data = data.Data(formatted_path='formatted.json')
 # make queries
 q = query.QueryJson(data.getData())
 
