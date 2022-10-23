@@ -63,3 +63,22 @@ class QueryJson:
                     total += 1
 
         return total
+
+    def getConvertTimeById(self, id):
+        if (len(self.data[id]) == 1):
+            return 0
+        start = parser.parse(self.data[id][0]['time'])
+        for i in range(1, len(self.data[id])):
+            if self.data[id][i]['event'] == "conversion":
+                end =  parser.parse(self.data[id][i]['time'])
+                return (end - start).total_seconds() / 60
+
+    def getConvertKeys(self):
+        keys = {}
+        for key, value in zip(self.data.keys(), self.data.values()):
+            for entry in value:
+                if entry['event'] == 'conversion' and key not in keys:
+                    keys[key] = 1
+                elif entry['event'] == 'conversion' and key in keys:
+                    keys[key] += 1
+        return keys
