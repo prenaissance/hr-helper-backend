@@ -1,9 +1,11 @@
 from dateutil import parser
+import pandas as pd
 
 
 class QueryJson:
-    def __init__(self, formated_data) -> None:
-        self.data = formated_data
+    def __init__(self, formatted_data) -> None:
+        self.data = formatted_data
+        self.df = pd.read_json(formatted_data)
 
     def getTotalConversions(self):
         total = 0
@@ -12,7 +14,7 @@ class QueryJson:
                 if entry['event'] == 'conversion':
                     total += 1
         return total
-    
+
     # do not use it to get conversion by time
     def getConversionBy(self, field):
         locale = {}
@@ -34,14 +36,15 @@ class QueryJson:
                     if entry[key] not in specifications[key]:
                         flag = False
                 if flag:
-                    time = parser.parse(entry['time'].replace('Z', utc_timezone))
+                    time = parser.parse(
+                        entry['time'].replace('Z', utc_timezone))
                     time += time.utcoffset()
                     if str(time.hour) not in daytime:
                         daytime[str(time.hour)] = 1
                     else:
                         daytime[str(time.hour)] += 1
         return daytime
-    
+
     # use this for event and device field
     def getAllTypes(self, field):
         events = []
@@ -50,7 +53,7 @@ class QueryJson:
                 if entry[field] not in events:
                     events.append(entry[field])
         return events
-    
+
     def getTotalBy(self, specifications):
         total = 0
         for value in self.data.values():

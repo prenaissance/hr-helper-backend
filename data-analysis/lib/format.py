@@ -15,16 +15,18 @@ converting from list of dictionaries to dictionary with primary key personid, th
 from dateutil import parser
 import json
 
+
 class Format:
     @staticmethod
-    def get_formated_data(data : dict, sorted_time=False):
+    def get_formatted_data(data: dict, sorted_time=False):
         mydata = {}
         for entry in data:
-            formated = {'event' : entry['event_name'], 'time': entry['event_time'], 'url': entry['url'], 'device': entry['device_type'], 'locale':entry['locale']}
+            formatted = {'event': entry['event_name'], 'time': entry['event_time'],
+                         'url': entry['url'], 'device': entry['device_type'], 'locale': entry['locale']}
             if entry["personid"] not in mydata:
-                mydata[entry["personid"]] = [formated]
+                mydata[entry["personid"]] = [formatted]
             else:
-                mydata[entry["personid"]].append(formated)
+                mydata[entry["personid"]].append(formatted)
         if (sorted_time):
             def criteria(e):
                 return parser.parse(e['time'])
@@ -33,7 +35,7 @@ class Format:
                 value.sort(key=criteria)
                 sorted_data[key] = value
             return sorted_data
-                
+
         return mydata
 
     @staticmethod

@@ -348,7 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# custom
 data-analysis/.ipynb_checkpoints/
-data-analysis/Input_Records-rjopma1bz5n6bxxvxhq0.json
-data-analysis/formated.json
-.gitignore
+data-analysis/.vscode/
+data-analysis/**/*json
