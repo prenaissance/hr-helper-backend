@@ -25,15 +25,14 @@ class QueryJson:
                         locale[entry[field]] += 1
         return locale
 
-    def getEventsByHour(self, events, utc_timezone="+00:00"):
+    def getEventsByHour(self, specifications, utc_timezone="+00:00"):
         daytime = {}
         for value in self.data.values():
             for entry in value:
-                flag = False
-                for event in events:
-                    if entry['event'] == event:
-                        flag = True
-                        break
+                flag = True
+                for key in specifications.keys():
+                    if entry[key] not in specifications[key]:
+                        flag = False
                 if flag:
                     time = parser.parse(entry['time'].replace('Z', utc_timezone))
                     time += time.utcoffset()
