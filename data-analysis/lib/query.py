@@ -25,11 +25,16 @@ class QueryJson:
                         locale[entry[field]] += 1
         return locale
 
-    def getConversionByHour(self, utc_timezone="+00:00"):
+    def getEventsByHour(self, events, utc_timezone="+00:00"):
         daytime = {}
         for value in self.data.values():
             for entry in value:
-                if entry['event'] == 'conversion':
+                flag = False
+                for event in events:
+                    if entry['event'] == event:
+                        flag = True
+                        break
+                if flag:
                     time = parser.parse(entry['time'].replace('Z', utc_timezone))
                     time += time.utcoffset()
                     if str(time.hour) not in daytime:
