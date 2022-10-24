@@ -20,8 +20,8 @@ brotli=1.0.9=h166bdaf_7
 brotli-bin=1.0.9=h166bdaf_7
 brotlipy=0.7.0=py39hb9d737c_1004
 bzip2=1.0.8=h7f98852_4
-ca-certificates=2022.9.24=ha878542_0
-certifi=2022.9.24=pyhd8ed1ab_0
+ca-certificates=2022.07.19=h06a4308_0
+certifi=2022.6.15=py39h06a4308_0
 cffi=1.15.1=py39he91dace_1
 charset-normalizer=2.1.1=pyhd8ed1ab_0
 contourpy=1.0.5=py39hf939315_0
@@ -142,7 +142,7 @@ nspr=4.32=h9c3ff4c_1
 nss=3.78=h2350873_0
 numpy=1.23.4=py39h3d75532_0
 openjpeg=2.5.0=h7d73246_1
-openssl=1.1.1q=h166bdaf_1
+openssl=1.1.1q=h7f8727e_0
 packaging=21.3=pyhd8ed1ab_0
 pandas=1.5.1=py39h4661b88_0
 pandoc=2.19.2=ha770c72_0
@@ -180,6 +180,7 @@ pyzmq=24.0.1=py39headdf64_0
 qt-main=5.15.6=hc525480_0
 readline=8.1.2=h0f457ee_0
 requests=2.28.1=pyhd8ed1ab_1
+scipy=1.9.3=py39hddc5342_0
 send2trash=1.8.0=pyhd8ed1ab_0
 setuptools=65.5.0=pyhd8ed1ab_0
 sip=6.7.2=py39h5a03fae_0
