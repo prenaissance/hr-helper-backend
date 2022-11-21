@@ -42,10 +42,7 @@ type return = StatisticsPreviewDF[];
 ```ts
 type GroupedStatistics = {
     field: string;
-    values: {
-        value: number;
-        timestamp: string;
-    }[];
+    values: number;
 }
 
 type return = GroupedStatistics[];
@@ -58,27 +55,13 @@ type return = GroupedStatistics[];
   {
     "field": "Mobile",
     "values": [
-      {
-        "value": 1,
-        "timestamp": "2020-01-01T00:00:00.000Z"
-      },
-      {
-        "value": 2,
-        "timestamp": "2020-01-01T00:00:00.000Z"
-      }
+      1, 2, 3
     ]
   },
   {
     "field": "Desktop",
     "values": [
-      {
-        "value": 3,
-        "timestamp": "2020-01-01T00:00:00.000Z"
-      },
-      {
-        "value": 4,
-        "timestamp": "2020-01-01T00:00:00.000Z"
-      }
+      4, 9, 10
     ]
   }
 ]
